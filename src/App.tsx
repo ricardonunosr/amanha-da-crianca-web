@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from './components/Header';
-import LastJourneyList from './components/LastJourneyList';
+import MainContent from './components/MainContent';
 import GlobalStyles from './styles/GlobalStyles';
 
 function App() {
   return (
     <>
       <Header />
-      <LastJourneyList />
+      <MainContent />
       <GlobalStyles />
     </>
   );

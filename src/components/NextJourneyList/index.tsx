@@ -4,13 +4,13 @@ import LastJourneyCard from '../LastJourneyCard';
 
 import { Container, Header, Box } from './styles';
 
-const LastJourneyList: React.FC = ({}) => {
+const NextJourneyList: React.FC = ({}) => {
   return (
     <>
       <Container>
         <Header>
           <Box />
-          Última Jornada
+          Próxima Jornada
         </Header>
         <LastJourneyCard
           isHome={true}
@@ -38,4 +38,4 @@ const LastJourneyList: React.FC = ({}) => {
   );
 };
 
-export default LastJourneyList;
+export default NextJourneyList;

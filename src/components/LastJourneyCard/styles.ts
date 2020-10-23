@@ -8,11 +8,12 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   flex: 1;
-
+  border-radius: 10px;
   padding: 30px 30px 30px 30px;
+  height: 30%;
   > img {
     max-width: 30%;
-    height: auto;
+    max-height: 100%;
   }
 `;
 
