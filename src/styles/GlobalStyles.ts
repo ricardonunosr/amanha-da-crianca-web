@@ -18,6 +18,7 @@ export default createGlobalStyle`
   :root {
     --primary: #171717;
     --hover:#525252 ;
-    --footter: #313131;
+    --footer: #313131;
+    --footer-text:#9A9A9A;
   }
 `;

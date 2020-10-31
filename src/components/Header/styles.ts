@@ -25,7 +25,8 @@ export const Container = styled.div`
 export const Menu = styled.div<Props>`
   display: flex;
   margin: 0 100px 0 0;
-
+  height: 100%;
+  align-items: center;
   @media screen and (max-width: 1024px) {
     display: ${p => (p.open ? 'flex' : 'none')};
     flex-direction: column;
