@@ -3,38 +3,33 @@ import React from 'react';
 import LastJourneyCard from '../LastJourneyCard';
 
 import { Container, Header, Box } from './styles';
+import { NextMatch } from '../../interfaces';
 
-const NextJourneyList: React.FC = ({}) => {
+interface Props {
+  nextMatches: NextMatch[] | undefined;
+}
+
+const NextJourneyList: React.FC<Props> = ({ nextMatches }) => {
   return (
-    <>
-      <Container>
-        <Header>
-          <Box />
-          Próxima Jornada
-        </Header>
-        <LastJourneyCard
-          isHome={true}
-          type="Escolinhas"
-          result="3-1"
-          adversaryLogo="https://upload.wikimedia.org/wikipedia/pt/c/c5/F.C._Porto_logo.png"
-          date="2020-02-19"
-        />
-        <LastJourneyCard
-          isHome={true}
-          type="Escolinhas"
-          result="3-1"
-          adversaryLogo="https://upload.wikimedia.org/wikipedia/pt/c/c5/F.C._Porto_logo.png"
-          date="2020-02-19"
-        />
-        <LastJourneyCard
-          isHome={true}
-          type="Escolinhas"
-          result="3-1"
-          adversaryLogo="https://upload.wikimedia.org/wikipedia/pt/c/c5/F.C._Porto_logo.png"
-          date="2020-02-19"
-        />
-      </Container>
-    </>
+    <Container>
+      <Header>
+        <Box />
+        Próxima Jornada
+      </Header>
+      {nextMatches !== undefined
+        ? nextMatches.map((_, i) => {
+            return (
+              <LastJourneyCard
+                type={nextMatches[i].type}
+                result={nextMatches[i].fieldName}
+                awayTeamLogo={nextMatches[i].awayTeam}
+                homeTeamLogo={nextMatches[i].homeTeam}
+                date={nextMatches[i].date}
+              />
+            );
+          })
+        : ''}
+    </Container>
   );
 };
 

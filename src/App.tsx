@@ -1,19 +1,24 @@
 import React from 'react';
+import MainPage from './pages/MainPage';
+import AdminPage from './pages/AdminPage';
 import Header from './components/Header';
-import MainContent from './components/MainContent';
-import About from './components/About';
-import Footer from './components/Footer';
 import GlobalStyles from './styles/GlobalStyles';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <>
+    <Router>
       <Header />
-      <MainContent />
-      <About />
-      <Footer />
+      <Switch>
+        <Route exact path="/">
+          <MainPage />
+        </Route>
+        <Route exact path="/admin">
+          <AdminPage />
+        </Route>
+      </Switch>
       <GlobalStyles />
-    </>
+    </Router>
   );
 }
 

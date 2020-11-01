@@ -14,12 +14,17 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  > img {
+  .link {
     cursor: pointer;
     margin: 60px 0 0 10%;
     width: 100px;
     height: 100px;
   }
+`;
+
+export const Logo = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 export const Menu = styled.div<Props>`

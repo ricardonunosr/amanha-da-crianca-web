@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
 
-import Logo from '../../assets/Logo.png';
+import LogoImage from '../../assets/Logo.png';
 
-import { Container, Menu, Button, Hamburger, CloseButton } from './styles';
+import {
+  Container,
+  Menu,
+  Button,
+  Hamburger,
+  CloseButton,
+  Logo
+} from './styles';
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const [open, setOpen] = useState(false);
 
-  const showSidebar = () => {
-    setOpen(!open);
-  };
-
   return (
     <>
       <Container>
-        <img src={Logo}></img>
+        <Link to="/" className="link">
+          <Logo src={LogoImage} />
+        </Link>
+
         <Hamburger
           onClick={() => {
             setOpen(true);

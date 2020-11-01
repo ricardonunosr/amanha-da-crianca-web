@@ -4,37 +4,33 @@ import LastJourneyCard from '../LastJourneyCard';
 
 import { Container, Header, Box } from './styles';
 
-const LastJourneyList: React.FC = ({}) => {
+import { PastResult } from '../../interfaces';
+
+interface Props {
+  pastResults: PastResult[] | undefined;
+}
+
+const LastJourneyList: React.FC<Props> = ({ pastResults }) => {
   return (
-    <>
-      <Container>
-        <Header>
-          <Box />
-          Última Jornada
-        </Header>
-        <LastJourneyCard
-          isHome={true}
-          type="Escolinhas"
-          result="3-1"
-          adversaryLogo="https://upload.wikimedia.org/wikipedia/pt/c/c5/F.C._Porto_logo.png"
-          date="2020-02-19"
-        />
-        <LastJourneyCard
-          isHome={true}
-          type="Escolinhas"
-          result="3-1"
-          adversaryLogo="https://upload.wikimedia.org/wikipedia/pt/c/c5/F.C._Porto_logo.png"
-          date="2020-02-19"
-        />
-        <LastJourneyCard
-          isHome={true}
-          type="Escolinhas"
-          result="3-1"
-          adversaryLogo="https://upload.wikimedia.org/wikipedia/pt/c/c5/F.C._Porto_logo.png"
-          date="2020-02-19"
-        />
-      </Container>
-    </>
+    <Container>
+      <Header>
+        <Box />
+        Última Jornada
+      </Header>
+      {pastResults !== undefined
+        ? pastResults.map((_, i) => {
+            return (
+              <LastJourneyCard
+                type={pastResults[i].type}
+                result={pastResults[i].result}
+                awayTeamLogo={pastResults[i].awayTeam}
+                homeTeamLogo={pastResults[i].homeTeam}
+                date={pastResults[i].date}
+              />
+            );
+          })
+        : ''}
+    </Container>
   );
 };
 
