@@ -7,6 +7,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas: 'LJ NJ';
+  grid-gap: 30px;
   width: 70%;
   margin: auto;
   height: 80vh;

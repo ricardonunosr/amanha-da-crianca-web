@@ -16,31 +16,29 @@ const Header: React.FC = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <Container>
-        <Link to="/" className="link">
-          <Logo src={LogoImage} />
-        </Link>
+    <Container>
+      <Link to="/" className="link">
+        <Logo src={LogoImage} />
+      </Link>
 
-        <Hamburger
+      <Hamburger
+        onClick={() => {
+          setOpen(true);
+        }}
+      />
+      <Menu open={open}>
+        <CloseButton
+          open={open}
           onClick={() => {
-            setOpen(true);
+            setOpen(false);
           }}
         />
-        <Menu open={open}>
-          <CloseButton
-            open={open}
-            onClick={() => {
-              setOpen(false);
-            }}
-          />
-          <Button>Calendário</Button>
-          <Button>Resultados</Button>
-          <Button>Escalões</Button>
-          <Button>Clube</Button>
-        </Menu>
-      </Container>
-    </>
+        <Button>Calendário</Button>
+        <Button>Resultados</Button>
+        <Button>Escalões</Button>
+        <Button>Clube</Button>
+      </Menu>
+    </Container>
   );
 };
 

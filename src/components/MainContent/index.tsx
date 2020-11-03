@@ -5,13 +5,13 @@ import NextJourneyList from '../NextJourneyList';
 import { PastResult, NextMatch } from '../../interfaces';
 import { Container } from './styles';
 
-import firestore from '../../utils/firebase';
+import { firestore } from '../../utils/firebase';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-const MainContent: React.FC = ({}) => {
+const MainContent: React.FC = () => {
   const pastResultsReference = firestore.collection('pastResults');
   const [pastResultsData] = useCollectionData<PastResult>(
-    pastResultsReference.limit(3),
+    pastResultsReference.orderBy('date', 'desc').limit(3),
     {
       idField: 'id'
     }
@@ -27,7 +27,7 @@ const MainContent: React.FC = ({}) => {
   return (
     <Container>
       <LastJourneyList pastResults={pastResultsData} />
-      <NextJourneyList nextMatches={nextMatchesData} />
+      <NextJourneyList canEdit={false} nextMatches={nextMatchesData} />
     </Container>
   );
 };

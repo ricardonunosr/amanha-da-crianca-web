@@ -1,8 +1,12 @@
 import styled from 'styled-components';
+import Card from '../Card';
+
+export const StyledCard = styled(Card)`
+  margin-top: 10px;
+`;
 
 export const Container = styled.div`
   margin-top: 5rem;
-  height: 70vh;
 `;
 export const Header = styled.div`
   font-size: 20px;

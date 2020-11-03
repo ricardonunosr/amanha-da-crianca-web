@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import firestore from '../../utils/firebase';
-import { Container, Input, Form, SubmitButton } from './styles';
+import { firestore } from '../../utils/firebase';
+import { Container, Form, ExpandIcon } from './styles';
 import { useFormik } from 'formik';
 import {
   MuiPickersUtilsProvider,
@@ -9,26 +9,36 @@ import {
 } from '@material-ui/pickers';
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
+import Card from '../Card';
+import Notification from '../Notification';
+import Button from '../../styles/elements/Button';
+import Input from '../../styles/elements/Input';
 
 const AddGame: React.FC = () => {
+  const [showPreview, setShowPreview] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
+
   const formik = useFormik({
     initialValues: {
-      date: new Date().toISOString().substring(0, 10),
+      date: new Date().toISOString(),
       homeTeam: '',
       awayTeam: '',
       fieldName: '',
       type: ''
     },
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
       const nextResultsReference = firestore.collection('nextMatches');
       nextResultsReference.add({ ...values });
-    },
-    validate: values => {}
+      setShowNotification(true);
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 5000);
+    }
   });
 
   return (
     <Container>
+      {showNotification ? <Notification text={'Ação teve sucesso'} /> : ''}
       <Form action="" onSubmit={formik.handleSubmit}>
         <label htmlFor="date">Date</label>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -76,7 +86,28 @@ const AddGame: React.FC = () => {
           value={formik.values.type}
         />
 
-        <SubmitButton type="submit">Submit</SubmitButton>
+        <Button type="submit">Submit</Button>
+        <h1>
+          Preview{' '}
+          <ExpandIcon
+            onClick={() => {
+              setShowPreview(!showPreview);
+            }}
+          />
+        </h1>
+        {showPreview ? (
+          <Card
+            id={''}
+            awayTeamLogo={formik.values.awayTeam}
+            homeTeamLogo={formik.values.homeTeam}
+            canEdit={false}
+            date={formik.values.date}
+            type={formik.values.type}
+            result={formik.values.fieldName}
+          />
+        ) : (
+          ''
+        )}
       </Form>
     </Container>
   );

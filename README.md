@@ -7,6 +7,7 @@ Website for futsal team of amanhã da criança
 - [React](https://reactjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Firebase](https://firebase.google.com/)
+- [Styled Components](https://styled-components.com/)
 
 ## How to get Started
 

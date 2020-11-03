@@ -1,8 +1,6 @@
 import React from 'react';
 
-import LastJourneyCard from '../LastJourneyCard';
-
-import { Container, Header, Box } from './styles';
+import { Container, Header, Box, StyledCard } from './styles';
 
 import { PastResult } from '../../interfaces';
 
@@ -17,19 +15,24 @@ const LastJourneyList: React.FC<Props> = ({ pastResults }) => {
         <Box />
         Última Jornada
       </Header>
-      {pastResults !== undefined
-        ? pastResults.map((_, i) => {
-            return (
-              <LastJourneyCard
-                type={pastResults[i].type}
-                result={pastResults[i].result}
-                awayTeamLogo={pastResults[i].awayTeam}
-                homeTeamLogo={pastResults[i].homeTeam}
-                date={pastResults[i].date}
-              />
-            );
-          })
-        : ''}
+      {pastResults?.length !== 0 ? (
+        pastResults?.map((_, i) => {
+          return (
+            <StyledCard
+              key={pastResults[i].id}
+              canEdit={false}
+              id={pastResults[i].id}
+              type={pastResults[i].type}
+              result={pastResults[i].result}
+              awayTeamLogo={pastResults[i].awayTeam}
+              homeTeamLogo={pastResults[i].homeTeam}
+              date={pastResults[i].date}
+            />
+          );
+        })
+      ) : (
+        <p>Sem jogos</p>
+      )}
     </Container>
   );
 };
