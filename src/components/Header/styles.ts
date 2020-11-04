@@ -32,6 +32,7 @@ export const Menu = styled.div<Props>`
   margin: 0 100px 0 0;
   height: 100%;
   align-items: center;
+
   @media screen and (max-width: 1024px) {
     display: ${p => (p.open ? 'flex' : 'none')};
     flex-direction: column;
@@ -42,24 +43,30 @@ export const Menu = styled.div<Props>`
     top: 0px;
     right: 0;
     width: 50%;
-    height: 100%;
+    height: 100vh;
     z-index: 2;
-    padding: 0 0 0 10px;
-  }
-`;
-
-export const Button = styled.div`
-  color: white;
-  cursor: pointer;
-  padding: 0 50px 0 0;
-  @media screen and (max-width: 1024px) {
-    margin: 0 20px 20px 0;
-    font-size: 30px;
-    padding: 0 0 0 0;
   }
 
-  &:hover {
-    color: var(--hover);
+  //Nav Items
+  > a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    padding: 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    @media screen and (max-width: 1024px) {
+      font-size: 30px;
+      padding: 0 10px 0 0px;
+      width: 100%;
+      height: 100px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    &:hover {
+      border-bottom: 2px solid white;
+    }
   }
 `;
 

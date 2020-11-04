@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import AddGame from '../../components/AddGame';
 import NextJourneyList from '../../components/NextJourneyList';
@@ -16,20 +16,27 @@ const AdminPage: React.FC = () => {
   const [nextMatchesData] = useCollectionData<NextMatch>(nextMatchesReference, {
     idField: 'id'
   });
+
+  const SignOut = () => {
+    auth.signOut();
+  };
+
+  useEffect(() => {
+    document.title = 'Adminstrador | Amanhã da criança';
+  }, []);
+
   return (
     <Container user={user}>
       {user ? (
         <>
           <h1>AdminPage</h1>
-          <SignOutButton
-            onClick={() => {
-              auth.signOut();
-            }}
-          >
-            Sign Out
-          </SignOutButton>
+          <SignOutButton onClick={SignOut}>Sign Out</SignOutButton>
           <AddGame />
-          <NextJourneyList canEdit={true} nextMatches={nextMatchesData} />
+          <NextJourneyList
+            heading="Calendário"
+            canEdit
+            nextMatches={nextMatchesData}
+          />
         </>
       ) : (
         <LogIn />

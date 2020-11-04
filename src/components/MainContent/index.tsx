@@ -26,8 +26,11 @@ const MainContent: React.FC = () => {
 
   return (
     <Container>
-      <LastJourneyList pastResults={pastResultsData} />
-      <NextJourneyList canEdit={false} nextMatches={nextMatchesData} />
+      <LastJourneyList heading="Última Jornada" pastResults={pastResultsData} />
+      <NextJourneyList
+        heading="Próxima Jornada"
+        nextMatches={nextMatchesData}
+      />
     </Container>
   );
 };

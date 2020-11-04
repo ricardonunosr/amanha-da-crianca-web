@@ -5,15 +5,20 @@ import { NextMatch } from '../../interfaces';
 
 interface Props {
   nextMatches: NextMatch[] | undefined;
-  canEdit: boolean;
+  canEdit?: boolean;
+  heading: string;
 }
 
-const NextJourneyList: React.FC<Props> = ({ nextMatches, canEdit }) => {
+const NextJourneyList: React.FC<Props> = ({
+  nextMatches,
+  canEdit,
+  heading
+}) => {
   return (
     <Container>
       <Header>
         <Box />
-        Próxima Jornada
+        {heading}
       </Header>
       {nextMatches?.length !== 0 ? (
         nextMatches?.map((_, i) => {

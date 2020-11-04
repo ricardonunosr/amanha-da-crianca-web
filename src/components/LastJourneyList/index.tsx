@@ -6,14 +6,15 @@ import { PastResult } from '../../interfaces';
 
 interface Props {
   pastResults: PastResult[] | undefined;
+  heading: string;
 }
 
-const LastJourneyList: React.FC<Props> = ({ pastResults }) => {
+const LastJourneyList: React.FC<Props> = ({ pastResults, heading }) => {
   return (
     <Container>
       <Header>
         <Box />
-        Última Jornada
+        {heading}
       </Header>
       {pastResults?.length !== 0 ? (
         pastResults?.map((_, i) => {

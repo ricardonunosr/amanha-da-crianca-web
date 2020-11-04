@@ -26,13 +26,14 @@ const AddGame: React.FC = () => {
       fieldName: '',
       type: ''
     },
-    onSubmit: values => {
+    onSubmit: (values, actions) => {
       const nextResultsReference = firestore.collection('nextMatches');
       nextResultsReference.add({ ...values });
       setShowNotification(true);
       setTimeout(() => {
         setShowNotification(false);
       }, 5000);
+      actions.resetForm();
     }
   });
 
