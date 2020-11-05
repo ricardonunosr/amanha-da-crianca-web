@@ -20,6 +20,7 @@ export const Container = styled.div`
 
   > p {
     color: var(--footer-text);
+    text-align: center;
   }
   > p a {
     color: #0060b6;
@@ -44,6 +45,10 @@ export const EmailLogo = styled(EmailOutline)`
   height: 70px;
   width: 70px;
   color: var(--footer-text);
+  cursor: pointer;
+  &:hover {
+    color: var(--hover);
+  }
 `;
 export const YoutubeLogo = styled(Youtube)`
   height: 70px;

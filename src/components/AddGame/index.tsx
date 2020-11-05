@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import { firestore } from '../../utils/firebase';
 import { Container, Form, ExpandIcon } from './styles';
@@ -10,13 +10,13 @@ import {
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import Card from '../Card';
-import Notification from '../Notification';
 import Button from '../../styles/elements/Button';
 import Input from '../../styles/elements/Input';
+import NotificationContext from '../../contexts/NotificationContext';
 
 const AddGame: React.FC = () => {
   const [showPreview, setShowPreview] = useState(false);
-  const [showNotification, setShowNotification] = useState(false);
+  const { showNotification } = useContext(NotificationContext);
 
   const formik = useFormik({
     initialValues: {
@@ -29,17 +29,13 @@ const AddGame: React.FC = () => {
     onSubmit: (values, actions) => {
       const nextResultsReference = firestore.collection('nextMatches');
       nextResultsReference.add({ ...values });
-      setShowNotification(true);
-      setTimeout(() => {
-        setShowNotification(false);
-      }, 5000);
+      showNotification('Ação teve sucesso');
       actions.resetForm();
     }
   });
 
   return (
     <Container>
-      {showNotification ? <Notification text={'Ação teve sucesso'} /> : ''}
       <Form action="" onSubmit={formik.handleSubmit}>
         <label htmlFor="date">Date</label>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>

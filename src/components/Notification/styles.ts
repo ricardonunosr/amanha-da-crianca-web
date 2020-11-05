@@ -9,7 +9,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   z-index: 100;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 50%;
   transform: translate(-50%, 30%);

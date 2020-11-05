@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import Modal from '@material-ui/core/Modal';
 
 import { firestore } from '../../utils/firebase';
+import NotificationContext from '../../contexts/NotificationContext';
 
 import {
   Container,
@@ -31,6 +32,7 @@ export interface Props {
 const Card: React.FC<Props> = props => {
   const [open, setOpen] = useState(false);
   const [newResult, setNewResult] = useState('');
+  const { showNotification } = useContext(NotificationContext);
 
   const handleOpen = () => {
     setOpen(true);
@@ -43,6 +45,7 @@ const Card: React.FC<Props> = props => {
   const deleteGame = async (id: string) => {
     const nextMatchesReference = await firestore.collection('nextMatches');
     await nextMatchesReference.doc(id).delete();
+    showNotification('Jogo apagado');
   };
 
   const EditGame = async () => {
@@ -55,6 +58,7 @@ const Card: React.FC<Props> = props => {
       result: newResult,
       type: props.type
     });
+    showNotification('Jogo atualizado');
   };
 
   return (

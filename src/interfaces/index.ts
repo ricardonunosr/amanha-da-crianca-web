@@ -17,3 +17,7 @@ export interface PastResult extends Entity {
   result: string;
   type: string;
 }
+
+export interface NotificationContextData {
+  showNotification: (text: string) => {};
+}

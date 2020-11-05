@@ -39,7 +39,7 @@ export const Menu = styled.div<Props>`
     align-items: flex-end;
     background-color: var(--primary);
     margin: 0 0 0 0;
-    position: absolute;
+    position: fixed;
     top: 0px;
     right: 0;
     width: 50%;
@@ -75,8 +75,12 @@ export const CloseButton = styled(Cross)<Props>`
   height: 50px;
   color: white;
   cursor: pointer;
-  @media screen and (min-width: 1024px) {
+  @media screen and (max-width: 1024px) {
     display: ${p => (p.open ? 'inline' : 'none')};
+  }
+
+  @media screen and (min-width: 1024px) {
+    display: none;
   }
 
   &:hover {

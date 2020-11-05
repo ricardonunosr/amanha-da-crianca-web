@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+import NotificationContext from '../../contexts/NotificationContext';
 import {
   Container,
   SocialLinks,
@@ -8,12 +8,23 @@ import {
   YoutubeLogo
 } from './styles';
 
+import CopyToClipboard from 'react-copy-to-clipboard';
+
 const Footer: React.FC = () => {
+  const { showNotification } = useContext(NotificationContext);
+
   return (
     <Container>
       <SocialLinks>
+        <CopyToClipboard
+          text="email@example.com"
+          onCopy={() => {
+            showNotification('Email copiado');
+          }}
+        >
+          <EmailLogo />
+        </CopyToClipboard>
         <FacebookLogo />
-        <EmailLogo />
         <YoutubeLogo />
       </SocialLinks>
       <p>Copyright © 2020 Amanhã da criança</p>
