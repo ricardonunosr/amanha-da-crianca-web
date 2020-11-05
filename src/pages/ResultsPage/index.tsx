@@ -9,7 +9,7 @@ import { Container } from './styles';
 const ResultsPage: React.FC = () => {
   const pastResultsReference = firestore.collection('pastResults');
   const [pastResultsData] = useCollectionData<PastResult>(
-    pastResultsReference,
+    pastResultsReference.orderBy('date', 'desc'),
     {
       idField: 'id'
     }

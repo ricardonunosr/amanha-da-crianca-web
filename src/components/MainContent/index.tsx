@@ -18,7 +18,7 @@ const MainContent: React.FC = () => {
   );
   const nextMatchesReference = firestore.collection('nextMatches');
   const [nextMatchesData] = useCollectionData<NextMatch>(
-    nextMatchesReference.limit(3),
+    nextMatchesReference.orderBy('date').limit(3),
     {
       idField: 'id'
     }

@@ -8,9 +8,12 @@ import { Container } from './styles';
 
 const CalendarPage: React.FC = () => {
   const nextMatchesReference = firestore.collection('nextMatches');
-  const [nextMatchesData] = useCollectionData<NextMatch>(nextMatchesReference, {
-    idField: 'id'
-  });
+  const [nextMatchesData] = useCollectionData<NextMatch>(
+    nextMatchesReference.orderBy('date'),
+    {
+      idField: 'id'
+    }
+  );
 
   useEffect(() => {
     document.title = 'Calendário | Amanhã da criança';
