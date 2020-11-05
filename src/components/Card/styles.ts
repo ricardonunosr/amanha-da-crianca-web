@@ -21,9 +21,9 @@ export const Container = styled.div`
 `;
 
 const logoStyles = css`
+  object-fit: contain;
+  width: 100%;
   height: 100%;
-  max-width: 100%;
-  max-height: 100%;
 `;
 
 export const HomeTeamLogo = styled.img`

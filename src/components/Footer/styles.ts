@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Facebook } from '@styled-icons/boxicons-logos/Facebook';
 import { EmailOutline } from '@styled-icons/evaicons-outline/EmailOutline';
 import { Youtube } from '@styled-icons/boxicons-logos/Youtube';
@@ -36,13 +36,7 @@ export const Container = styled.div`
 
 export const SocialLinks = styled.div``;
 
-export const FacebookLogo = styled(Facebook)`
-  height: 70px;
-  width: 70px;
-  color: var(--footer-text);
-`;
-export const EmailLogo = styled(EmailOutline)`
-  height: 70px;
+const logoStyles = css`
   width: 70px;
   color: var(--footer-text);
   cursor: pointer;
@@ -50,8 +44,13 @@ export const EmailLogo = styled(EmailOutline)`
     color: var(--hover);
   }
 `;
+
+export const FacebookLogo = styled(Facebook)`
+  ${logoStyles}
+`;
+export const EmailLogo = styled(EmailOutline)`
+  ${logoStyles}
+`;
 export const YoutubeLogo = styled(Youtube)`
-  height: 70px;
-  width: 70px;
-  color: var(--footer-text);
+  ${logoStyles}
 `;

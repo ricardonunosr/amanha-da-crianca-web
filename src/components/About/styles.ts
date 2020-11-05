@@ -16,8 +16,6 @@ export const Container = styled.div`
   }
 
   > img {
-    cursor: pointer;
-
     width: 100%;
     height: 100%;
     max-height: 300px;
