@@ -1,6 +1,6 @@
 # Amanhã da criança
 
-Website for futsal team of amanhã da criança
+Website for futsal team of amanhã da criança.Deployed [here](https://amanhadacrianca.netlify.app/)
 
 ## 🚀 Tecnologies Used:
 
