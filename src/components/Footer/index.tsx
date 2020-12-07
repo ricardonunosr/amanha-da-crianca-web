@@ -17,15 +17,16 @@ const Footer: React.FC = () => {
     <Container>
       <SocialLinks>
         <CopyToClipboard
-          text="email@example.com"
+          text="futsal@acrianca.pt"
           onCopy={() => {
             showNotification('Email copiado');
           }}
         >
           <EmailLogo />
         </CopyToClipboard>
-        <FacebookLogo />
-        <YoutubeLogo />
+        <a href="https://www.facebook.com/oamanhadacrianca">
+          <FacebookLogo />
+        </a>
       </SocialLinks>
       <p>Copyright © 2020 Amanhã da criança</p>
       <p>

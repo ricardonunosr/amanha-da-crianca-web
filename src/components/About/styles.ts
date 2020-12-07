@@ -26,7 +26,7 @@ export const Container = styled.div`
 export const Caption = styled.div`
   color: white;
   margin: 50px 80px 50px 80px;
-  font-size: 22px;
+  font-size: 20px;
 
   @media screen and (max-width: 1180px) {
     font-size: 16px;

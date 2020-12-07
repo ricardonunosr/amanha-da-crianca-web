@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { Expand } from '@styled-icons/boxicons-regular/Expand';
+import { Form } from 'formik';
+import InputField from './InputField';
+import SelectField from './SelectField';
+import DatePickerField from './DatePickerField';
+import { TrashFill } from '@styled-icons/bootstrap/TrashFill';
 
 export const Container = styled.div`
   border: 2px;
@@ -7,21 +11,35 @@ export const Container = styled.div`
   margin: auto;
   display: flex;
   height: 80%;
-  align-items: center;
 `;
 
-export const Form = styled.form`
+export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  width: 80%;
-  margin: auto;
+  width: 90%;
 `;
 
-export const ExpandIcon = styled(Expand)`
-  width: 30px;
-  height: 30px;
+export const StyledInputField = styled(InputField)`
+  margin-top: 10px;
+`;
+
+export const StyledSelectField = styled(SelectField)`
+  margin-top: 70px;
+`;
+
+export const StyledDatePickerField = styled(DatePickerField)`
+  width: 100%;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+export const TrashIcon = styled(TrashFill)`
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+
   &:hover {
-    cursor: pointer;
     color: grey;
   }
 `;
