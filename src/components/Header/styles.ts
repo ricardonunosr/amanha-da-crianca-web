@@ -27,11 +27,12 @@ export const Logo = styled.img`
   height: 100%;
 `;
 
-export const Menu = styled.div<Props>`
+export const Menu = styled.nav<Props>`
   display: flex;
   margin: 0 100px 0 0;
   height: 100%;
   align-items: center;
+  position: relative;
 
   @media screen and (max-width: 1024px) {
     display: ${p => (p.open ? 'flex' : 'none')};
@@ -48,12 +49,14 @@ export const Menu = styled.div<Props>`
   }
 
   //Nav Items
-  > a {
-    text-decoration: none;
-    color: white;
+  > button {
     cursor: pointer;
     padding: 30px;
     height: 100%;
+    position: relative;
+    ul {
+      width: 100%;
+    }
     display: flex;
     align-items: center;
     @media screen and (max-width: 1024px) {
@@ -67,6 +70,57 @@ export const Menu = styled.div<Props>`
     &:hover {
       border-bottom: 2px solid white;
     }
+  }
+`;
+
+export const Dropdown = styled.ul`
+  opacity: 0;
+  display: none;
+  width: 10rem;
+  min-width: 5rem;
+  position: absolute;
+  transition: all 0.5s ease;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+`;
+export const DropdownButton = styled.button`
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 1.5rem;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  &:hover {
+    background-color: var(--hover);
+  }
+  &:hover > ${Dropdown} {
+    opacity: 1;
+    display: block;
+  }
+`;
+
+export const DropdownItem = styled.li`
+  color: #fff;
+
+  background: var(--primary);
+  display: block;
+  float: left;
+  padding: 1rem;
+  position: relative;
+  text-decoration: none;
+  transition-duration: 0.5s;
+  clear: both;
+  width: 100%;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  &:hover {
+    background: var(--hover);
+    cursor: pointer;
   }
 `;
 

@@ -2,7 +2,16 @@ import React, { useState } from 'react';
 
 import LogoImage from '../../assets/Logo.png';
 
-import { Container, Menu, Hamburger, CloseButton, Logo } from './styles';
+import {
+  Container,
+  Menu,
+  Hamburger,
+  CloseButton,
+  Logo,
+  DropdownButton,
+  Dropdown,
+  DropdownItem
+} from './styles';
 import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
@@ -22,15 +31,32 @@ const Header: React.FC = () => {
       <Hamburger onClick={handleOpen} />
       <Menu open={open}>
         <CloseButton open={open} onClick={handleClose} />
-        <Link to="/calendar" onClick={handleClose}>
-          Calendário
-        </Link>
-        <Link to="/results" onClick={handleClose}>
-          Resultados
-        </Link>
-        <Link to="/" onClick={handleClose}>
+        <DropdownButton>
           Escalões
-        </Link>
+          <Dropdown>
+            <Link to="/tier/seniores" onClick={handleClose}>
+              <DropdownItem>Seniores</DropdownItem>
+            </Link>
+            <Link to="/tier/juniores" onClick={handleClose}>
+              <DropdownItem>Juniores</DropdownItem>
+            </Link>
+            <Link to="/tier/juvenis" onClick={handleClose}>
+              <DropdownItem>Juvenis</DropdownItem>
+            </Link>
+            <Link to="/tier/iniciados" onClick={handleClose}>
+              <DropdownItem>Iniciados</DropdownItem>
+            </Link>
+            <Link to="/tier/infantis" onClick={handleClose}>
+              <DropdownItem>Infantis</DropdownItem>
+            </Link>
+            <Link to="/tier/benjamins" onClick={handleClose}>
+              <DropdownItem>Benjamins</DropdownItem>
+            </Link>
+            <Link to="/tier/traquinas" onClick={handleClose}>
+              <DropdownItem>Traquinas</DropdownItem>
+            </Link>
+          </Dropdown>
+        </DropdownButton>
       </Menu>
     </Container>
   );

@@ -1,8 +1,7 @@
 import React from 'react';
 import MainPage from './pages/MainPage';
 import AdminPage from './pages/AdminPage';
-import CalendarPage from './pages/CalendarPage';
-import ResultsPage from './pages/ResultsPage';
+import TierPage from './pages/TierPage';
 import Header from './components/Header';
 import GlobalStyles from './styles/GlobalStyles';
 import { NotificationProvider } from './contexts/NotificationContext';
@@ -20,11 +19,8 @@ function App() {
           <Route exact path="/admin">
             <AdminPage />
           </Route>
-          <Route exact path="/calendar">
-            <CalendarPage />
-          </Route>
-          <Route exact path="/results">
-            <ResultsPage />
+          <Route exact path="/tier/:tierId">
+            <TierPage />
           </Route>
         </Switch>
         <GlobalStyles />

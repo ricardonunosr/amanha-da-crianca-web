@@ -45,7 +45,7 @@ const AddGame: React.FC = () => {
     });
   };
 
-  const getUrlImage = async (fileName: string) => {
+  const getUrlImage = async (fileName: string): Promise<string> => {
     return await storage.ref(fileName).getDownloadURL();
   };
 
@@ -88,28 +88,37 @@ const AddGame: React.FC = () => {
               imageHome,
               values.newHomeTeamName
             );
-            urlHome = await getUrlImage(fileName);
+            const url = await getUrlImage(fileName);
+            urlHome = url.split('&token')[0];
           } else {
-            urlHome = options.find(team => team.value === values.homeTeam)?.url;
+            const url = options.find(team => team.value === values.homeTeam)
+              ?.url;
+            if (url !== undefined) {
+              urlHome = url.split('&token')[0];
+            }
           }
           if (values.awayTeam === 'new' && imageAway !== undefined) {
             const fileName = await fileUpload(
               imageAway,
               values.newAwayTeamName
             );
-            urlAway = await getUrlImage(fileName);
+            const url = await getUrlImage(fileName);
+            urlAway = url.split('&token')[0];
           } else {
-            urlAway = options.find(team => team.value === values.awayTeam)?.url;
+            const url = options.find(team => team.value === values.awayTeam)
+              ?.url;
+            if (url !== undefined) {
+              urlAway = url.split('&token')[0];
+            }
           }
           const nextResultsReference = firestore.collection('nextMatches');
-          const label = data.find(element => element.value === values.type)
-            ?.label;
+
           nextResultsReference.add({
             awayTeam: urlAway,
             date: values.date.toISOString(),
             fieldName: values.fieldName,
             homeTeam: urlHome,
-            type: label
+            type: values.type
           });
           getAllImages();
           showNotification('Ação teve sucesso');

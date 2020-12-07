@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Container, Header, Box, StyledCard } from './styles';
 import { NextMatch } from '../../interfaces';
+import { CapitalFirstLetter } from '../../utils/utils';
 
 interface Props {
   nextMatches: NextMatch[] | undefined;
@@ -27,7 +28,7 @@ const NextJourneyList: React.FC<Props> = ({
               key={nextMatches[i].id}
               canEdit={canEdit}
               id={nextMatches[i].id}
-              type={nextMatches[i].type}
+              type={CapitalFirstLetter(nextMatches[i].type)}
               result={nextMatches[i].fieldName}
               awayTeamLogo={nextMatches[i].awayTeam}
               homeTeamLogo={nextMatches[i].homeTeam}
